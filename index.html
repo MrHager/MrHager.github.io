@@ -92,6 +92,7 @@
 
         function ShowTextBox()
         {
+	    document.getElementById('QR-Data').value = '';
             GenerateQR("105")
             document.getElementById("QR-Data").style.display = "block";
             document.getElementById("Directions").style.display = "block";
@@ -112,6 +113,7 @@
 
         function Code()
         {
+	    document.getElementById('QR-Data').value = '';
             document.getElementById("QR-Data").style.display = "none";
             document.getElementById("Directions").style.display = "none";
             for (var i = 0, length = radios.length; i < length; i++)
