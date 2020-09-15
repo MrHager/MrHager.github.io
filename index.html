@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Hager's Checkout System</title>
     <style>
         br
         {
@@ -30,108 +33,96 @@
             width:275px;
             text-align: center;
         }
-
-    </style>
+     </style>
+</head>
 	
-	
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-    <title>Mr. Hager's Checkout System</title>
+<body>
+     <p ><small>Select destination & scan QR code.</small></p>
+     <div class="radiobuttons-container">
+          <input type="radio" name="location" id="bathroom" value="100" onclick="Code()">
+          <label for="bathroom">Bathroom</label><br><br>
 
+          <input type="radio" name="location" id="nurse" value="101" onclick="Code()">
+          <label for="nurse">Nurse</label><br><br>
 
-    <body>
-        <p ><small>Select destination & scan QR code.</small></p>
-        <div class="radiobuttons-container">
-            <input type="radio" name="location" id="bathroom" value="100" onclick="Code()">
-            <label for="bathroom">Bathroom</label><br><br>
+          <input type="radio" name="location" id="drink" value="102" onclick="Code()">
+          <label for="drink">Drink</label><br><br>
 
-            <input type="radio" name="location" id="nurse" value="101" onclick="Code()">
-            <label for="nurse">Nurse</label><br><br>
+          <input type="radio" name="location" id="other" value="105" onclick="ShowTextBox()">
+          <label for="other">Other</label><br>
 
-            <input type="radio" name="location" id="drink" value="102" onclick="Code()">
-            <label for="drink">Drink</label><br><br>
+          <input type="radio" name="location" id="library" value="104" onclick="Code()">
+          <label for="library">Library</label><br><br>
 
-            <input type="radio" name="location" id="other" value="105" onclick="ShowTextBox()">
-            <label for="other">Other</label><br>
+          <input type="radio" name="location" id="guidance" value="106" onclick="Code()">
+          <label for="guidance">Guidance</label><br><br>
 
-            <input type="radio" name="location" id="library" value="104" onclick="Code()">
-            <label for="library">Library</label><br><br>
+          <input type="radio" name="location" id="deans" value="103" onclick="Code()">
+          <label for="deans">Dean's Office</label>
+     </div>
 
-            <input type="radio" name="location" id="guidance" value="106" onclick="Code()">
-            <label for="guidance">Guidance</label><br><br>
+     <div id="Directions" class="QRContainer" >1) Scan QR code displayed below. </div>
 
-            <input type="radio" name="location" id="deans" value="103" onclick="Code()">
-            <label for="deans">Dean's Office</label>
-        </div>
-
-
-        <div
-            id="Directions" class="QRContainer" >1) Scan QR code displayed below.
-        </div>
-
-        <div id="Container" class="QRContainer">
-            <div id="qrcode" class="indent"><br>
-            </div>
-        </div>
+     <div id="Container" class="QRContainer">
+          <div id="qrcode" class="indent"><br></div>
+     </div>
 	    
-	<div
-            id="Directions2" class="QRContainer" >2) Type destination below & scan QR code again.
-            <input type="text" id="QR-Data" size="28" style="font-size:16px" oninput="GenerateOtherQR()">
-        </div>
-     </body>
+     <div
+          id="Directions2" class="QRContainer" >2) Type destination below & scan QR code again.
+          <input type="text" id="QR-Data" size="28" style="font-size:16px" oninput="GenerateOtherQR()">
+     </div>
 	
-     <script src="https://combinatronics.com/MrHager/MrHager.github.io/master/qrcode.min.js"></script>
+     <script src="https://combinatronics.com/MrHager/MrHager.github.io/master/qrcode.min.js"></script>    
     
-    <script>
-    
-    	var qrdata = document.getElementById('QR-Data');
-        var qrcode = new QRCode(document.getElementById('qrcode'),
-        {
-            width: 150,
-            height: 150,
-        })
+     <script>    
+           var qrdata = document.getElementById('QR-Data');
+           var qrcode = new QRCode(document.getElementById('qrcode'),
+           {
+                 width: 150,
+                 height: 150,
+           })
+           document.getElementById("QR-Data").style.display = "none";
+           document.getElementById("Directions").style.display = "none";
+	   document.getElementById("Directions2").style.display = "none";
 
-        document.getElementById("QR-Data").style.display = "none";
-        document.getElementById("Directions").style.display = "none";
-	document.getElementById("Directions2").style.display = "none";
+           function ShowTextBox()
+           {
+	        document.getElementById('QR-Data').value = '';
+                GenerateQR("105")
+                document.getElementById("QR-Data").style.display = "block";
+                document.getElementById("Directions").style.display = "block";
+	        document.getElementById("Directions2").style.display = "block";
+           }
 
-        function ShowTextBox()
-        {
-	    document.getElementById('QR-Data').value = '';
-            GenerateQR("105")
-            document.getElementById("QR-Data").style.display = "block";
-            document.getElementById("Directions").style.display = "block";
-	    document.getElementById("Directions2").style.display = "block";
-        }
-
-        function GenerateOtherQR()
-        {
-        	var data = qrdata.value;
-            qrcode.makeCode(data);     
-        }
+           function GenerateOtherQR()
+           {
+                var data = qrdata.value;
+                qrcode.makeCode(data);     
+           }
         
-        function GenerateQR(QRCodeData)
-        {
-            qrcode.makeCode(QRCodeData);       
-        }
+           function GenerateQR(QRCodeData)
+           {
+                qrcode.makeCode(QRCodeData);       
+           }
 
-        var radios = document.getElementsByName('location');
+           var radios = document.getElementsByName('location');
 
-        function Code()
-        {
-	    document.getElementById('QR-Data').value = '';
-            document.getElementById("QR-Data").style.display = "none";
-            document.getElementById("Directions").style.display = "none";
-	    document.getElementById("Directions2").style.display = "none";
-            for (var i = 0, length = radios.length; i < length; i++)
-            {
-                if (radios[i].checked)
+           function Code()
+           {
+	        document.getElementById('QR-Data').value = '';
+                document.getElementById("QR-Data").style.display = "none";
+                document.getElementById("Directions").style.display = "none";
+	        document.getElementById("Directions2").style.display = "none";
+		   
+                for (var i = 0, length = radios.length; i < length; i++)
                 {
-                    GenerateQR(radios[i].value)                    
-                    break;
-                }
-            }
-        }
-     	
-	</script>
+                     if (radios[i].checked)
+                     {
+                         GenerateQR(radios[i].value)                    
+                         break;
+                     }
+                 }
+             }     	
+     </script>
+</body>
 </html>
