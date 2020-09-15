@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr. Hager's Checkout System</title>
@@ -34,6 +34,10 @@
             text-align: center;
         }
      </style>
+	
+     document.getElementById("QR-Data").style.display = "none";
+     document.getElementById("Directions").style.display = "none";
+     document.getElementById("Directions2").style.display = "none";
 </head>
 	
 <body>
@@ -81,9 +85,6 @@
                  width: 150,
                  height: 150,
            })
-           document.getElementById("QR-Data").style.display = "none";
-           document.getElementById("Directions").style.display = "none";
-	   document.getElementById("Directions2").style.display = "none";
 
            function ShowTextBox()
            {
