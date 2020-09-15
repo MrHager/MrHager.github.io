@@ -72,7 +72,7 @@
         </div>
 	    
 	<div
-            id="Directions" class="QRContainer" >2) Type where you are going and scan QR code again.
+            id="Directions2" class="QRContainer" >2) Type where you are going and scan QR code again.
             <input type="text" id="QR-Data" size="30px" style="font-size:16px" oninput="GenerateOtherQR()">
         </div>
 
@@ -90,6 +90,7 @@
 
         document.getElementById("QR-Data").style.display = "none";
         document.getElementById("Directions").style.display = "none";
+	document.getElementById("Directions2").style.display = "none";
 
         function ShowTextBox()
         {
@@ -97,6 +98,7 @@
             GenerateQR("105")
             document.getElementById("QR-Data").style.display = "block";
             document.getElementById("Directions").style.display = "block";
+	    document.getElementById("Directions2").style.display = "block";
         }
 
         function GenerateOtherQR()
