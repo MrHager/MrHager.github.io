@@ -78,10 +78,11 @@
             id="Directions2" class="QRContainer" >2) Type where you are going and scan QR code again.
             <input type="text" id="QR-Data" size="28" style="font-size:16px" oninput="GenerateOtherQR()">
         </div>
-
-	</body>
+     </body>
+	
+    <script src="https://combinatronics.com/MrHager/MrHager.github.io/master/qrcode.min.js"></script>
     
-    <script src="https://combinatronics.com/MrHager/MrHager.github.io/master/qrcode.min.js">
+    <script>
     	var qrdata = document.getElementById('QR-Data');
         var qrcode = new QRCode(document.getElementById('qrcode'),
         {
